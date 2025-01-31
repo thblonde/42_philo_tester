@@ -1,5 +1,101 @@
 cd ..; make >/dev/null
 
+./philo 2>tmp
+echo "Number of argument";echo
+output=$(wc -l <tmp)
+if [ $output -eq 1 ]
+then
+    printf "\033[0;32mOK\033[0m"
+    ./philo 1 2>tmp
+    output=$(wc -l <tmp)
+    if [ $output -eq 1 ]
+    then
+        printf " \033[0;32mOK\033[0m"
+        ./philo 1 2 2>tmp
+        output=$(wc -l <tmp)
+        if [ $output -eq 1 ]
+        then
+            printf " \033[0;32mOK\033[0m"
+            ./philo 1 2 3 2>tmp
+            output=$(wc -l <tmp)
+            if [ $output -eq 1 ]
+            then
+                printf " \033[0;32mOK\033[0m"
+                ./philo 1 2 3 4 2>tmp
+                output=$(wc -l <tmp)
+                if [ $output -eq 1 ]
+                then
+                    printf " \033[0;32mOK\033[0m"
+                    ./philo 1 2 3 4 5 6 7 2>tmp
+                    output=$(wc -l <tmp)
+                    if [ $output -eq 1 ]
+                    then
+                        printf " \033[0;32mOK\033[0m\n"
+                    else
+                        printf "\033[0;31mKO\033[0m\n"
+                    fi
+                else
+                    printf "\033[0;31mKO\033[0m\n"
+                fi
+            else
+                printf "\033[0;31mKO\033[0m\n"
+            fi
+        else
+            printf "\033[0;31mKO\033[0m\n"
+        fi
+    else
+        printf "\033[0;31mKO\033[0m\n"
+    fi
+else
+    printf "\033[0;31mKO\033[0m\n"
+fi
+echo
+
+
+./philo -5 800 200 200 2>tmp
+echo "Argument validity";echo
+output=$(wc -l <tmp)
+if [ $output -eq 1 ]
+then
+    printf "\033[0;32mOK\033[0m"
+    ./philo 5 -800 200 200 2>tmp
+    output=$(wc -l <tmp)
+    if [ $output -eq 1 ]
+    then
+        printf " \033[0;32mOK\033[0m"
+        ./philo 5 800 -200 200 2>tmp
+        output=$(wc -l <tmp)
+        if [ $output -eq 1 ]
+        then
+            printf " \033[0;32mOK\033[0m"
+            ./philo 5 800 200 -200 2>tmp
+            output=$(wc -l <tmp)
+            if [ $output -eq 1 ]
+            then
+                printf " \033[0;32mOK\033[0m"
+                ./philo 5 800 200 200 -7 2>tmp
+                output=$(wc -l <tmp)
+                if [ $output -eq 1 ]
+                then
+                    printf " \033[0;32mOK\033[0m\n"
+                else
+                    printf "\033[0;31mKO\033[0m\n"
+                fi
+            else
+                printf "\033[0;31mKO\033[0m\n"
+            fi
+        else
+            printf "\033[0;31mKO\033[0m\n"
+        fi
+    else
+        printf "\033[0;31mKO\033[0m\n"
+    fi
+else
+    printf "\033[0;31mKO\033[0m\n"
+fi
+echo
+
+
 ./philo 1 800 200 200 >tmp
 echo "Test 1 800 200 200 : The philosopher should not eat and should die at 800ms.";echo
 time_to_die=$(grep died <tmp | awk '{print $1}')
@@ -80,6 +176,7 @@ else
     printf "\033[0;32mOK\033[0m\n"
 fi
 
+
 echo; echo "Test 2 200 200 200 : One philosopher should die at 200ms.";echo
 ./philo 2 200 200 200 >tmp
 time_to_die=$(grep died <tmp | awk '{print $1}')
@@ -96,5 +193,5 @@ then
 else
     printf "\033[0;31mKO\033[0m\n"
 fi
-
+echo
 rm tmp
