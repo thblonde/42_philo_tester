@@ -169,10 +169,10 @@ else
 fi
 
 echo -n "[2 410 200 200]: "
-if timeout 10 ./philo 2 400 200 200 | grep -qiE "died|dead"
+if timeout 10 ./philo 2 410 200 200 | grep -qiE "died|dead"
 then
     printf "\033[0;31mKO\033[0m\n\n"
-    echo "./philo 2 400 200 200: \033[0;31mKO\033[0m : no one should die" >>trace
+    echo "./philo 2 410 200 200: \033[0;31mKO\033[0m : no one should die" >>trace
 else
     printf "\033[0;32mOK\033[0m\n\n"
 fi
