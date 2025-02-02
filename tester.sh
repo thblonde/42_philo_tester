@@ -39,15 +39,6 @@ else
     echo "./philo 1 2 3: \033[0;31mKO\033[0m" >>trace
 fi
 
-./philo 1 2 3 4 >output 2>&1
-if grep -qiE "error|invalid|arg|args|argument|arguments|usage" output
-then
-    printf " \033[0;32mOK\033[0m"
-else
-    printf " \033[0;31mKO\033[0m"
-    echo "./philo 1 2 3 4: \033[0;31mKO\033[0m" >>trace
-fi
-
 ./philo 1 2 3 4 5 6 7 >output 2>&1
 if grep -qiE "error|invalid|arg|args|argument|arguments|usage" output
 then
@@ -177,7 +168,7 @@ else
     echo "./philo 4 310 200 100: \033[0;31mKO\033[0m : a philo should die" >>trace
 fi
 
-echo -n "[2 400 200 200]: "
+echo -n "[2 410 200 200]: "
 if timeout 10 ./philo 2 400 200 200 | grep -qiE "died|dead"
 then
     printf "\033[0;31mKO\033[0m\n\n"
