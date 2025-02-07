@@ -6,7 +6,11 @@ Simple tester for the dining philosophers problem of School 42
 
 ```bash
 git clone https://github.com/thblonde/42_philo_tester.git
+```
+```bash
 cd 42_philo_tester
+```
+```bash
 ./tester.sh
 ```
 
